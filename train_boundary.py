@@ -12,6 +12,7 @@ can be used to manipulate the correpsonding attribute of the synthesis.
 import os.path
 import argparse
 import numpy as np
+from random import randrange
 
 from utils.logger import setup_logger
 from utils.manipulator import train_boundary
@@ -43,7 +44,7 @@ def parse_args():
 def main():
   """Main function."""
   args = parse_args()
-  logger = setup_logger(args.output_dir, logger_name='generate_data')
+  logger = setup_logger(args.output_dir, logger_name=str(randrange(0,99999))
 
   logger.info('Loading latent codes.')
   if not os.path.isfile(args.latent_codes_path):
