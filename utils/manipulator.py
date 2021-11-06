@@ -3,6 +3,8 @@
 
 import numpy as np
 from sklearn import svm
+from random import randrange
+
 
 from .logger import setup_logger
 
@@ -46,7 +48,7 @@ def train_boundary(latent_codes,
     ValueError: If the input `latent_codes` or `scores` are with invalid format.
   """
   if not logger:
-    logger = setup_logger(work_dir='', logger_name='train_boundary')
+    logger = setup_logger(work_dir='', logger_name=str(randrange(99999))
 
   if (not isinstance(latent_codes, np.ndarray) or
       not len(latent_codes.shape) == 2):
