@@ -131,13 +131,13 @@ def train_boundary(latent_codes,
 
   if remaining_num:
     remaining_prediction = classifier.predict(remaining_data)
-    correct_num = np.sum(remaining_label == remaining_prediction)
+    rem_correct_num = np.sum(remaining_label == remaining_prediction)
     logger.info(f'Accuracy for remaining set: '
-                f'{correct_num} / {remaining_num} = '
-                f'{correct_num / remaining_num:.6f}')
+                f'{rem_correct_num} / {remaining_num} = '
+                f'{rem_correct_num / remaining_num:.6f}')
 
   a = classifier.coef_.reshape(1, latent_space_dim).astype(np.float32)
-  return a / np.linalg.norm(a)
+  return a / np.linalg.norm(a), correct_num, val_num
 
 
 def project_boundary(primal, *args):
